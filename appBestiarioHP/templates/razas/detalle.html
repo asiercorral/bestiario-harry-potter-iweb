@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ raza.nombre }}{% endblock %}
+{% block content %}
+  <h2>{{ raza.nombre }}</h2>
+  <p>{{ raza.descripcion }}</p>
+
+  <h3>Criaturas de esta raza</h3>
+  {% if criaturas %}
+    <ul>
+      {% for c in criaturas %}
+        <li><a href="{% url 'detalle_criatura' criatura_id=c.id %}">{{ c.nombre }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay criaturas registradas para esta raza.</p>
+  {% endif %}
+{% endblock %}

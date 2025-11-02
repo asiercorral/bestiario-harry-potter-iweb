@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Categorías de peligro{% endblock %}
+{% block content %}
+  <h2>Categorías de peligro</h2>
+  {% if peligros %}
+    <ul>
+      {% for p in peligros %}
+        <li><a href="{% url 'detalle_peligro' peligro_id=p.id %}">{{ p.nombre }}</a> — {{ p.descripcion|truncatechars:80 }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay categorías de peligro registradas.</p>
+  {% endif %}
+{% endblock %}

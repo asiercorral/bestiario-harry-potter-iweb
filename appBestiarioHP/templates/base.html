@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>{% block title %}Harry Potter Bestiary{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1><a href="{% url 'index' %}">Harry Potter Bestiary</a></h1>
+    <nav>
+      <ul class="nav">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'criaturas' %}">Criaturas</a></li>
+        <li><a href="{% url 'razas' %}">Razas</a></li>
+        <li><a href="{% url 'peligros' %}">Categorías de peligro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>Proyecto Bestiario — Entrega 1</p>
+  </footer>
+</body>
+</html>

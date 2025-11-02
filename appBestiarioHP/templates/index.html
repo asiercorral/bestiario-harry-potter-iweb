@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Inicio - Harry Potter Bestiary{% endblock %}
+{% block content %}
+  <h2>Portada</h2>
+  <p>Una criatura representativa por cada raza:</p>
+
+  <ul>
+    {% for item in lista_raza_criatura %}
+      <li>
+        <strong>{{ item.raza.nombre }}</strong>:
+        {% if item.criatura %}
+          <a href="{% url 'detalle_criatura' criatura_id=item.criatura.id %}">{{ item.criatura.nombre }}</a>
+        {% else %}
+          (sin criaturas registradas)
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
