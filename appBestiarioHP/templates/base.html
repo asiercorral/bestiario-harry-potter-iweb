@@ -9,16 +9,22 @@
 </head>
 <body>
   <header>
-    <h1><a href="{% url 'index' %}">Harry Potter Bestiary</a></h1>
+  <div class="navbar">
+    <div class="logo-titulo">
+      <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo">
+      <h1><a href="{% url 'index' %}">Harry Potter Bestiary</a></h1>
+    </div>
     <nav>
       <ul class="nav">
-        <li><a href="{% url 'index' %}">Inicio</a></li>
-        <li><a href="{% url 'criaturas' %}">Criaturas</a></li>
-        <li><a href="{% url 'razas' %}">Razas</a></li>
-        <li><a href="{% url 'peligros' %}">Categorías de peligro</a></li>
-      </ul>
-    </nav>
-  </header>
+        <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">Inicio</a></li>
+        <li><a href="{% url 'criaturas' %}" class="{% if request.resolver_match.url_name == 'criaturas' %}active{% endif %}">Criaturas</a></li>
+        <li><a href="{% url 'razas' %}" class="{% if request.resolver_match.url_name == 'razas' %}active{% endif %}">Razas</a></li>
+        <li><a href="{% url 'peligros' %}" class="{% if request.resolver_match.url_name == 'peligros' %}active{% endif %}">Categorías de peligro</a></li>
+    </ul>
+  </nav>
+  </div>
+</header>
+
 
   <main id="content">
     {% block content %}{% endblock %}
