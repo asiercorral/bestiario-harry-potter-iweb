@@ -10,7 +10,7 @@
     <!-- Diapositiva 1 -->
     <div class="slide slide1 active">
       <div class="carousel-text">
-        <h2>BESTIARIO HARRY POTTER</h2>
+        <h1>BESTIARIO HARRY POTTER</h1>
         <p>Explora las criaturas mágicas del mundo de Harry Potter.</p>
       </div>
     </div>
@@ -78,7 +78,23 @@
       {% for item in lista_raza_criatura %}
         <div class="raza-card">
           <div class="raza-img">
-            <img src="{% static 'img/placeholder.jpg' %}" alt="{{ item.raza.nombre }}">
+            {% if item.raza.nombre == "Criaturas vegetales o terrestres" %}
+              <img src="{% static 'img/horklump.webp' %}" alt="{{ item.raza.nombre }}">
+            {% elif item.raza.nombre == "Dragones y bestias aladas" %}
+              <img src="{% static 'img/hipogrifo.webp' %}" alt="{{ item.raza.nombre }}">
+            {% elif item.raza.nombre == "Felinos y cánidos mágicos" %}
+              <img src="{% static 'img/kneazle.webp' %}" alt="{{ item.raza.nombre }}">
+            {% elif item.raza.nombre == "Serpientes y reptiles mágicos" %}
+              <img src="{% static 'img/occamy.webp' %}" alt="{{ item.raza.nombre }}">
+            {% elif item.raza.nombre == "Criaturas fantásticas y espirituales" %}
+              <img src="{% static 'img/mooncalf.webp' %}" alt="{{ item.raza.nombre }}">
+            {% elif item.raza.nombre == "Criaturas legendarias y oscuras" %}
+              <img src="{% static 'img/basilisco.jpg' %}" alt="{{ item.raza.nombre }}">
+            {% elif item.raza.nombre == "Criaturas pequeñas y domésticas" %}
+              <img src="{% static 'img/gusarajo.webp' %}" alt="{{ item.raza.nombre }}">
+            {% else %}
+              <img src="{% static 'img/portada1.jpg' %}" alt="{{ item.raza.nombre }}">
+            {% endif %}
           </div>
           <h3>{{ item.raza.nombre }}</h3>
           {% if item.criatura %}
