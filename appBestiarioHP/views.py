@@ -6,9 +6,17 @@ def index(request):
     razas = get_list_or_404(Raza.objects.order_by('nombre'))
     # Para pasar la criatura "representativa" a la plantilla,
     # construimos una lista de dicts {raza, criatura_representativa}
+    # Evitamos duplicados de criaturas
+    criaturas_usadas = set()
     lista = []
     for r in razas:
-        criatura_repr = r.criatura_set.first()
+        # Buscar una criatura que no hayamos usado aún
+        criatura_repr = None
+        for criatura in r.criatura_set.all():
+            if criatura.id not in criaturas_usadas:
+                criatura_repr = criatura
+                criaturas_usadas.add(criatura.id)
+                break
         lista.append({'raza': r, 'criatura': criatura_repr})
     context = {'lista_raza_criatura': lista}
     return render(request, 'index.html', context)
