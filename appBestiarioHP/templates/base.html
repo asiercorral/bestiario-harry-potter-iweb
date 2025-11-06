@@ -23,15 +23,30 @@
     </ul>
   </nav>
   </div>
-</header>
+  </header>
 
+  {% block carousel %}{% endblock %}
 
   <main id="content">
     {% block content %}{% endblock %}
-  </main>
-
-  <footer>
-    <p>Proyecto Bestiario — Entrega 1</p>
+  </main>  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Sobre el Bestiario</h4>
+        <p>Un catálogo completo de criaturas mágicas del universo de Harry Potter, clasificadas por raza y nivel de peligro.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <p>info@bestiario-hp.com</p>
+        <p>+34 91 234 5678</p>
+        <p>Universidad de Deusto, Bilbao</p>
+      </div>
+      <div class="footer-section">
+        <h4>Información Legal</h4>
+        <p>&copy; 2025 Bestiario Harry Potter</p>
+        <p>Todos los derechos reservados</p>
+      </div>
+    </div>
   </footer>
 </body>
 </html>

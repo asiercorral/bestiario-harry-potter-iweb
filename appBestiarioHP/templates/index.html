@@ -3,7 +3,7 @@
 
 {% block title %}Inicio - Harry Potter Bestiary{% endblock %}
 
-{% block content %}
+{% block carousel %}
 <section class="intro-carousel">
   <div class="carousel-container">
 
@@ -52,18 +52,30 @@
     </div>
   </div>
 </section>
+{% endblock %}
 
+{% block content %}
 <!-- Bienvenida -->
 <section class="bienvenida">
   <div class="bienvenida-contenido">
     <div class="imagen-bienvenida">
-      <img src="{% static 'img/portada1.jpg' %}" alt="Imagen de bienvenida">
+      <img src="{% static 'img/bienvenida.jpg' %}" alt="Imagen de bienvenida">
     </div>
     <div class="texto-bienvenida">
       <h2>Bienvenido al Bestiario</h2>
       <p>
         Explora un catálogo de criaturas fascinantes, desde dragones majestuosos hasta pequeños seres mágicos.
         Aprende sobre sus razas, hábitats y niveles de peligro.
+      </p>
+      <p>
+        Este bestiario recopila información completa sobre todas las criaturas mágicas del universo de Harry Potter,
+        clasificadas por raza y nivel de peligrosidad. Descubre dónde habitan, cuáles son sus características distintivas
+        y qué las hace especiales en el mundo mágico.
+      </p>
+      <p>
+        Navega a través de nuestras secciones para explorar cada criatura en detalle, conocer sus orígenes legendarios
+        y entender su importancia en la historia. Desde el Phoenix resucitador hasta el Basilisco mortal, cada criatura
+        tiene su propia historia que contar.
       </p>
     </div>
   </div>
@@ -77,6 +89,7 @@
     <div class="razas-container">
       {% for item in lista_raza_criatura %}
         <div class="raza-card">
+          <h3>{{ item.raza.nombre }}</h3>
           <div class="raza-img">
             {% if item.raza.nombre == "Criaturas vegetales o terrestres" %}
               <img src="{% static 'img/horklump.webp' %}" alt="{{ item.raza.nombre }}">
@@ -96,7 +109,6 @@
               <img src="{% static 'img/portada1.jpg' %}" alt="{{ item.raza.nombre }}">
             {% endif %}
           </div>
-          <h3>{{ item.raza.nombre }}</h3>
           {% if item.criatura %}
             <a href="{% url 'detalle_criatura' criatura_id=item.criatura.id %}">{{ item.criatura.nombre }}</a>
           {% else %}
