@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   const dots = document.querySelectorAll(".dot");
-  const carouselContainer = document.querySelector(".carousel-container");
+  const carruselContainer = document.querySelector(".carrusel-container");
   let index = 0;
 
   function showSlide(i) {
@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     // Actualizar la imagen de fondo del contenedor
-    carouselContainer.className = 'carousel-container';
-    carouselContainer.classList.add(`slide${i + 1}-active`);
+    carruselContainer.className = 'carrusel-container';
+    carruselContainer.classList.add(`slide${i + 1}-active`);
     
     index = i;
   }
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const razaNext = document.querySelector(".raza-next");
 
   if (razasContainer && razaPrev && razaNext) {
-    const razaCards = Array.from(document.querySelectorAll(".raza-card"));
+    const razaCards = Array.from(document.querySelectorAll(".carta-raza"));
     
     if (razaCards.length > 0) {
       let currentIndex = 0;

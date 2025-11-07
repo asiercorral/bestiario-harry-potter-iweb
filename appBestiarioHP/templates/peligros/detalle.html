@@ -5,13 +5,9 @@
   <p>{{ peligro.descripcion }}</p>
 
   <h3>Criaturas con esta categoría de peligro</h3>
-  {% if criaturas %}
-    <ul>
-      {% for c in criaturas %}
-        <li><a href="{% url 'detalle_criatura' criatura_id=c.id %}">{{ c.nombre }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No hay criaturas registradas con esta categoría.</p>
-  {% endif %}
+  <ul>
+    {% for c in criaturas %}
+      <li><a href="{% url 'detalle_criatura' criatura_id=c.id %}">{{ c.nombre }}</a></li>
+    {% endfor %}
+  </ul>
 {% endblock %}

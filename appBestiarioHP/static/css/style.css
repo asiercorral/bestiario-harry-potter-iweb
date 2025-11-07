@@ -1,4 +1,4 @@
-/* Estilos base */
+/*Estilos generales*/
 body {
   background-color: #00001b;
   color: #f5f5f5;
@@ -7,14 +7,15 @@ body {
   padding: 0;
   line-height: 1.6;
   overflow-x: hidden;
+  margin-top: 18px;
 }
 
-h1{
+h1 {
   text-align: center;
   font-size: 3em;
 }
 
-h2{
+h2 {
   color: #d7c77d;
   text-align: center;
   font-size: 2.5em;
@@ -36,7 +37,15 @@ a:hover {
   text-shadow: 0 0 6px #f5e56b;
 }
 
-/* Barra de navegación */
+header a {
+  color: #fff;
+}
+
+header a:hover {
+  color: #c5b358;
+}
+
+/*Barra de navegacion*/
 header {
   position: fixed;
   top: 0;
@@ -85,28 +94,19 @@ header h1 {
   padding: 0;
 }
 
-header a {
-  color: #fff;
-  text-decoration: none;
-}
-
-header a:hover {
-  color: #c5b358;
-}
-
 .nav a.active {
   color: #f5e56b;
   font-weight: bold;
 }
 
-/* Contenido principal */
+/*Main*/
 main {
   padding: 2em;
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Listas */
+/*Listas*/
 ul {
   list-style: none;
   padding-left: 0;
@@ -122,29 +122,27 @@ li {
   padding: 0;
 }
 
-/* Carrusel del menú principal */
-.intro-carousel {
+/*Carrusel introductorio*/
+.intro-carrusel {
   position: relative;
   text-align: center;
-  padding: 0;
   max-width: 1100px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   padding-top: 75px;
 }
 
-.carousel-container {
+.carrusel-container {
   position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 8em 1em;
-  border-radius: 0;
   transition: background-image 0.5s ease-in-out;
   width: 100%;
   box-sizing: border-box;
 }
 
-.carousel-container::before {
+.carrusel-container::before {
   content: '';
   position: absolute;
   top: 0;
@@ -165,25 +163,25 @@ li {
   display: block;
 }
 
-.carousel-text {
+.carrusel-texto {
   position: relative;
   z-index: 2;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
-.carousel-container.slide1-active {
+.carrusel-container.slide1-active {
   background-image: url('../img/portada1.jpg');
 }
 
-.carousel-container.slide2-active {
+.carrusel-container.slide2-active {
   background-image: url('../img/portada2.jpg');
 }
 
-.carousel-container.slide3-active {
+.carrusel-container.slide3-active {
   background-image: url('../img/portada3.jpg');
 }
 
-.carousel-container.slide4-active {
+.carrusel-container.slide4-active {
   background-image: url('../img/portada4.jpg');
 }
 
@@ -244,7 +242,7 @@ button.prev:hover, button.next:hover {
   background-color: #ffd700;
 }
 
-/* Sección de bienvenida */
+/*Bienvenida*/
 .bienvenida-contenido {
   display: flex;
   align-items: center;
@@ -287,7 +285,7 @@ button.prev:hover, button.next:hover {
   text-align: left;
 }
 
-/* Carrusel de razas */
+/*Carrusel de razas*/
 .razas-carrusel {
   text-align: center;
   margin: 4em 0 1em 0;
@@ -332,7 +330,7 @@ button.prev:hover, button.next:hover {
   height: 400px;
 }
 
-.raza-card {
+.carta-raza {
   background-color: #111;
   border: 1px solid #333;
   padding: 1.5em;
@@ -351,7 +349,7 @@ button.prev:hover, button.next:hover {
   flex-direction: column;
 }
 
-.raza-card h3 {
+.carta-raza h3 {
   margin-top: 0;
   margin-bottom: 0.8em;
   color: #ffd700;
@@ -361,7 +359,7 @@ button.prev:hover, button.next:hover {
   font-size: 0.9em;
 }
 
-.raza-card .raza-img {
+.carta-raza .raza-img {
   width: 100%;
   height: 210px;
   overflow: hidden;
@@ -372,7 +370,7 @@ button.prev:hover, button.next:hover {
   justify-content: center;
 }
 
-.raza-card img {
+.carta-raza img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -380,20 +378,19 @@ button.prev:hover, button.next:hover {
   transition: all 0.3s ease;
 }
 
-.raza-card a, .raza-card p {
+.carta-raza a, .carta-raza p {
   margin: 0;
   font-size: 0.85em;
   text-align: center;
 }
 
-.raza-card.left {
+.carta-raza.left {
   opacity: 0.4;
   transform: scale(0.85) translateX(-250px);
   filter: blur(1px);
-  left: 0;
 }
 
-.raza-card.center {
+.carta-raza.center {
   opacity: 1;
   transform: scale(1.15) translateX(0);
   z-index: 5;
@@ -403,15 +400,14 @@ button.prev:hover, button.next:hover {
   position: relative;
 }
 
-.raza-card.center h3 {
+.carta-raza.center h3 {
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
-.raza-card.right {
+.carta-raza.right {
   opacity: 0.4;
   transform: scale(0.85) translateX(250px);
   filter: blur(1px);
-  right: 0;
 }
 
 .raza-prev, .raza-next {
@@ -442,7 +438,7 @@ button.prev:hover, button.next:hover {
   text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
-/* Pie de página */
+/*Footer*/
 footer {
   background-color: #0a0a2a;
   color: #aaa;

@@ -5,13 +5,9 @@
   <p><strong>Descripción:</strong> {{ criatura.descripcion }}</p>
 
   <p><strong>Raza(s):</strong>
-    {% if criatura.raza.all %}
-      {% for r in criatura.raza.all %}
-        <a href="{% url 'detalle_raza' raza_id=r.id %}">{{ r.nombre }}</a>{% if not forloop.last %}, {% endif %}
-      {% endfor %}
-    {% else %}
-      (sin raza asociada)
-    {% endif %}
+    {% for r in criatura.raza.all %}
+      <a href="{% url 'detalle_raza' raza_id=r.id %}">{{ r.nombre }}</a>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
   </p>
 
   <p><strong>Categoría de peligro:</strong>
@@ -21,14 +17,10 @@
   <p><strong>Dónde se encuentra:</strong> {{ criatura.donde_se_encuentra }}</p>
 
   <h3>Características</h3>
-  {% if criatura.caracteristicas %}
-    <ul>
-      {# caracteristicas es JSONField; asumimos lista/array en la mayoría de casos #}
-      {% for item in criatura.caracteristicas %}
-        <li>{{ item }}</li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No hay características registradas.</p>
-  {% endif %}
+  <ul>
+    {# caracteristicas es JSONField; asumimos lista/array en la mayoría de casos #}
+    {% for item in criatura.caracteristicas %}
+      <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

@@ -2,16 +2,12 @@
 {% block title %}Lista de criaturas{% endblock %}
 {% block content %}
   <h2>Lista de Criaturas</h2>
-  {% if criaturas %}
-    <ul>
-      {% for c in criaturas %}
-        <li>
-          <a href="{% url 'detalle_criatura' criatura_id=c.id %}">{{ c.nombre }}</a>
-          — Categoría: <a href="{% url 'detalle_peligro' peligro_id=c.categoria_peligro.id %}">{{ c.categoria_peligro.nombre }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No hay criaturas registradas.</p>
-  {% endif %}
+  <ul>
+    {% for c in criaturas %}
+      <li>
+        <a href="{% url 'detalle_criatura' criatura_id=c.id %}">{{ c.nombre }}</a>
+        — Categoría: <a href="{% url 'detalle_peligro' peligro_id=c.categoria_peligro.id %}">{{ c.categoria_peligro.nombre }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}

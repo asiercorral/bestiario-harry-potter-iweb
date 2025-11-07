@@ -3,21 +3,22 @@
 
 {% block title %}Inicio - Harry Potter Bestiary{% endblock %}
 
+<!-- Carrusel intro -->
 {% block carousel %}
-<section class="intro-carousel">
-  <div class="carousel-container">
+<section class="intro-carrusel">
+  <div class="carrusel-container">
 
     <!-- Diapositiva 1 -->
     <div class="slide slide1 active">
-      <div class="carousel-text">
-        <h1>BESTIARIO HARRY POTTER</h1>
+      <div class="carrusel-texto">
+        <h2>BESTIARIO HARRY POTTER</h2>
         <p>Explora las criaturas mágicas del mundo de Harry Potter.</p>
       </div>
     </div>
 
     <!-- Diapositiva 2 -->
     <div class="slide slide2">
-      <div class="carousel-text">
+      <div class="carrusel-texto">
         <h2><a href="{% url 'criaturas' %}">CRIATURAS</a></h2>
         <p>Descubre todas las criaturas registradas.</p>
       </div>
@@ -25,7 +26,7 @@
 
     <!-- Diapositiva 3 -->
     <div class="slide slide3">
-      <div class="carousel-text">
+      <div class="carrusel-texto">
         <h2><a href="{% url 'razas' %}">RAZAS</a></h2>
         <p>Conoce las razas mágicas que habitan este mundo.</p>
       </div>
@@ -33,7 +34,7 @@
 
     <!-- Diapositiva 4 -->
     <div class="slide slide4">
-      <div class="carousel-text">
+      <div class="carrusel-texto">
         <h2><a href="{% url 'peligros' %}">CATEGORÍAS DE PELIGRO</a></h2>
         <p>Clasifica a las criaturas según su nivel de amenaza.</p>
       </div>
@@ -88,7 +89,7 @@
     <button class="prev raza-prev">❮</button>
     <div class="razas-container">
       {% for item in lista_raza_criatura %}
-        <div class="raza-card">
+        <div class="carta-raza">
           <h3>{{ item.raza.nombre }}</h3>
           <div class="raza-img">
             {% if item.raza.nombre == "Criaturas vegetales o terrestres" %}

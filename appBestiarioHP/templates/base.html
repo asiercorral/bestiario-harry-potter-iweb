@@ -8,6 +8,7 @@
   <title>{% block title %}Harry Potter Bestiary{% endblock %}</title>
 </head>
 <body>
+  <!-- Barra de navegacion -->
   <header>
   <div class="navbar">
     <div class="logo-titulo">
@@ -25,11 +26,16 @@
   </div>
   </header>
 
+  <!-- Carrusel intro -->
   {% block carousel %}{% endblock %}
 
+  <!-- Contenido principal -->
   <main id="content">
     {% block content %}{% endblock %}
-  </main>  <footer>
+  </main>
+
+  <!-- Footer -->
+  <footer>
     <div class="footer-content">
       <div class="footer-section">
         <h4>Sobre el Bestiario</h4>
@@ -45,6 +51,16 @@
         <h4>Información Legal</h4>
         <p>&copy; 2025 Bestiario Harry Potter</p>
         <p>Todos los derechos reservados</p>
+      </div>
+      <div class="footer-section">
+        <h4>Validación</h4>
+        <p>
+          <a href="https://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+              src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+              alt="¡CSS Válido!" />
+          </a>
+        </p>
       </div>
     </div>
   </footer>

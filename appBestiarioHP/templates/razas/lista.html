@@ -2,13 +2,9 @@
 {% block title %}Lista de razas{% endblock %}
 {% block content %}
   <h2>Razas</h2>
-  {% if razas %}
-    <ul>
-      {% for r in razas %}
-        <li><a href="{% url 'detalle_raza' raza_id=r.id %}">{{ r.nombre }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No hay razas registradas.</p>
-  {% endif %}
+  <ul>
+    {% for r in razas %}
+      <li><a href="{% url 'detalle_raza' raza_id=r.id %}">{{ r.nombre }}</a></li>
+    {% endfor %}
+  </ul>
 {% endblock %}
