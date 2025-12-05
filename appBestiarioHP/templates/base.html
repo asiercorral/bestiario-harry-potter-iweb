@@ -21,6 +21,7 @@
         <li><a href="{% url 'criaturas' %}" class="{% if request.resolver_match.url_name == 'criaturas' %}active{% endif %}">Criaturas</a></li>
         <li><a href="{% url 'razas' %}" class="{% if request.resolver_match.url_name == 'razas' %}active{% endif %}">Razas</a></li>
         <li><a href="{% url 'peligros' %}" class="{% if request.resolver_match.url_name == 'peligros' %}active{% endif %}">Categorías de peligro</a></li>
+        <li><a href="{% url 'agenda' %}" class="{% if request.resolver_match.url_name == 'agenda' %}active{% endif %}">Agenda</a></li>
     </ul>
   </nav>
   </div>
@@ -56,7 +57,7 @@
         <h4>Validación</h4>
         <p>
           <a href="https://jigsaw.w3.org/css-validator/check/referer">
-            <img style="border:0;width:88px;height:31px"
+            <img class="css-validator-badge"
               src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
               alt="¡CSS Válido!" />
           </a>

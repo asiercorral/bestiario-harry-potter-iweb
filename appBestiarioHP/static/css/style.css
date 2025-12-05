@@ -467,3 +467,9 @@ footer {
   margin: 0.5em 0;
   line-height: 1.6;
 }
+
+.css-validator-badge {
+  border: 0;
+  width: 88px;
+  height: 31px;
+}

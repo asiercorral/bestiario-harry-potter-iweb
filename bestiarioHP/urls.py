@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('appBestiarioHP/', include('appBestiarioHP.urls')),  # redirige a la app
+    path('', include('appBestiarioHP.urls')),  # redirige a la app
     path('admin/', admin.site.urls),
 ]
