@@ -1,0 +1,178 @@
+[
+  {
+    "model": "appBestiarioHP.peligro",
+    "pk": 1,
+    "fields": {
+      "nombre": "X",
+      "descripcion": "Aburrido. Criatura inofensiva que no representa ningún peligro para los magos."
+    }
+  },
+  {
+    "model": "appBestiarioHP.peligro",
+    "pk": 2,
+    "fields": {
+      "nombre": "XX",
+      "descripcion": "Inofensivo. Puede ser domesticado con facilidad."
+    }
+  },
+  {
+    "model": "appBestiarioHP.peligro",
+    "pk": 3,
+    "fields": {
+      "nombre": "XXX",
+      "descripcion": "Un mago competente puede manejarlo. Solo representa peligro moderado."
+    }
+  },
+  {
+    "model": "appBestiarioHP.peligro",
+    "pk": 4,
+    "fields": {
+      "nombre": "XXXX",
+      "descripcion": "Peligroso. Requiere conocimientos especializados. Solo un mago experto puede manejarlo."
+    }
+  },
+  {
+    "model": "appBestiarioHP.peligro",
+    "pk": 5,
+    "fields": {
+      "nombre": "XXXXX",
+      "descripcion": "Asesino conocido. Imposible de entrenar o domesticar. Extremadamente peligroso."
+    }
+  },
+  {
+    "model": "appBestiarioHP.raza",
+    "pk": 1,
+    "fields": {
+      "nombre": "Ser",
+      "descripcion": "Criaturas con inteligencia suficiente para comprender las leyes mágicas y participar en su creación. Incluye humanos, duendes, vampiros, entre otros."
+    }
+  },
+  {
+    "model": "appBestiarioHP.raza",
+    "pk": 2,
+    "fields": {
+      "nombre": "Bestia",
+      "descripcion": "Criaturas mágicas que no poseen inteligencia suficiente para comprender las leyes del mundo mágico. Son la mayoría de las criaturas del bestiario."
+    }
+  },
+  {
+    "model": "appBestiarioHP.raza",
+    "pk": 3,
+    "fields": {
+      "nombre": "Espíritu",
+      "descripcion": "Entidades etéreas que no poseen cuerpo físico. Incluye fantasmas, poltergeists y otras manifestaciones espectrales."
+    }
+  },
+  {
+    "model": "appBestiarioHP.raza",
+    "pk": 4,
+    "fields": {
+      "nombre": "Acuático",
+      "descripcion": "Criaturas que habitan principalmente en ambientes acuáticos como lagos, ríos y océanos del mundo mágico."
+    }
+  },
+  {
+    "model": "appBestiarioHP.raza",
+    "pk": 5,
+    "fields": {
+      "nombre": "Volador",
+      "descripcion": "Criaturas capaces de volar de forma natural, ya sea mediante alas, magia u otros medios."
+    }
+  },
+  {
+    "model": "appBestiarioHP.criatura",
+    "pk": 1,
+    "fields": {
+      "nombre": "Hipogrifo",
+      "descripcion": "El hipogrifo es una criatura mágica con cabeza, alas y patas delanteras de águila gigante y cuerpo, patas traseras y cola de caballo. Buckbeak es el hipogrifo más famoso, conocido por Hagrid en Hogwarts.",
+      "donde_se_encuentra": "Europa, principalmente en zonas boscosas y montañosas",
+      "caracteristicas": ["Orgulloso", "Leal si se le respeta", "Vuelo rápido", "Ojos naranjas penetrantes"],
+      "categoria_peligro": 3,
+      "raza": [2, 5]
+    }
+  },
+  {
+    "model": "appBestiarioHP.criatura",
+    "pk": 2,
+    "fields": {
+      "nombre": "Fénix",
+      "descripcion": "El fénix es un ave mágica de plumaje rojo y dorado, famosa por su capacidad de renacer de sus propias cenizas. Fawkes, el fénix de Dumbledore, es el más conocido en el mundo mágico.",
+      "donde_se_encuentra": "Egipto, India y China. Muy raros y difíciles de encontrar",
+      "caracteristicas": ["Inmortal mediante renacimiento", "Lágrimas curativas", "Canto reconfortante", "Extremadamente leal"],
+      "categoria_peligro": 4,
+      "raza": [5]
+    }
+  },
+  {
+    "model": "appBestiarioHP.criatura",
+    "pk": 3,
+    "fields": {
+      "nombre": "Basilisco",
+      "descripcion": "El basilisco es una serpiente gigante, también conocida como el Rey de las Serpientes. Es una de las criaturas más mortales del mundo mágico, capaz de matar con su mirada.",
+      "donde_se_encuentra": "Lugares oscuros y húmedos. El más famoso habitaba la Cámara de los Secretos de Hogwarts",
+      "caracteristicas": ["Mirada letal", "Colmillos venenosos", "Solo habla Pársel", "Puede vivir cientos de años"],
+      "categoria_peligro": 5,
+      "raza": [2]
+    }
+  },
+  {
+    "model": "appBestiarioHP.criatura",
+    "pk": 4,
+    "fields": {
+      "nombre": "Thestral",
+      "descripcion": "Los thestrals son caballos alados esqueléticos, visibles solo para aquellos que han presenciado la muerte. A pesar de su apariencia intimidante, son criaturas gentiles y muy inteligentes.",
+      "donde_se_encuentra": "Bosques oscuros de Gran Bretaña e Irlanda. Una manada habita en el Bosque Prohibido de Hogwarts",
+      "caracteristicas": ["Invisibles para la mayoría", "Excelente sentido de orientación", "Muy inteligentes", "Carnívoros"],
+      "categoria_peligro": 4,
+      "raza": [2, 5]
+    }
+  },
+  {
+    "model": "appBestiarioHP.criatura",
+    "pk": 5,
+    "fields": {
+      "nombre": "Sirena",
+      "descripcion": "Las sirenas son seres acuáticos con torso humano y cola de pez. En el mundo mágico, tienen su propia comunidad y lenguaje, el Sirenio. Habitan en el Lago Negro de Hogwarts.",
+      "donde_se_encuentra": "Lagos y océanos de todo el mundo. Conocida colonia en el Lago Negro de Hogwarts",
+      "caracteristicas": ["Canto hipnótico", "Piel grisácea", "Dientes afilados", "Sociedad organizada"],
+      "categoria_peligro": 4,
+      "raza": [1, 4]
+    }
+  },
+  {
+    "model": "appBestiarioHP.criatura",
+    "pk": 6,
+    "fields": {
+      "nombre": "Bowtruckle",
+      "descripcion": "El bowtruckle es una pequeña criatura guardiana de árboles, hecha de corteza y ramitas. Son pacíficos pero pueden atacar con sus afilados dedos si su árbol es amenazado. Newt Scamander tenía varios como mascotas.",
+      "donde_se_encuentra": "Bosques del oeste de Inglaterra, sur de Alemania y Escandinavia",
+      "caracteristicas": ["Excelente abriendo cerraduras", "Camuflaje natural", "Protector de árboles de varita", "Tímido pero leal"],
+      "categoria_peligro": 2,
+      "raza": [2]
+    }
+  },
+  {
+    "model": "appBestiarioHP.criatura",
+    "pk": 7,
+    "fields": {
+      "nombre": "Dragón Colacuerno Húngaro",
+      "descripcion": "El Colacuerno Húngaro es considerado el dragón más peligroso. De color negro con cuernos de bronce y púas en la cola. Harry Potter enfrentó uno durante el Torneo de los Tres Magos.",
+      "donde_se_encuentra": "Hungría y zonas montañosas de Europa del Este",
+      "caracteristicas": ["Aliento de fuego de largo alcance", "Cola con púas letales", "Extremadamente territorial", "Escamas resistentes a hechizos"],
+      "categoria_peligro": 5,
+      "raza": [2, 5]
+    }
+  },
+  {
+    "model": "appBestiarioHP.criatura",
+    "pk": 8,
+    "fields": {
+      "nombre": "Elfo Doméstico",
+      "descripcion": "Los elfos domésticos son pequeñas criaturas mágicas que sirven a familias de magos. Tienen grandes orejas de murciélago y ojos enormes. Dobby es el elfo doméstico más famoso por ayudar a Harry Potter.",
+      "donde_se_encuentra": "Hogares de familias mágicas de todo el mundo. Muchos trabajan en Hogwarts",
+      "caracteristicas": ["Magia propia poderosa", "Extremadamente leales", "Orejas de murciélago", "Se castigan a sí mismos"],
+      "categoria_peligro": 2,
+      "raza": [1]
+    }
+  }
+]

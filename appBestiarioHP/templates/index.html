@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Inicio - Harry Potter Bestiary{% endblock %}
+{% block title %}{% trans "Inicio" %} - {% trans "Harry Potter Bestiary" %}{% endblock %}
 
 <!-- Carrusel intro -->
 {% block carousel %}
@@ -11,32 +12,32 @@
     <!-- Diapositiva 1 -->
     <div class="slide slide1 active">
       <div class="carrusel-texto">
-        <h2>BESTIARIO HARRY POTTER</h2>
-        <p>Explora las criaturas mágicas del mundo de Harry Potter.</p>
+        <h2>{% trans "BESTIARIO HARRY POTTER" %}</h2>
+        <p>{% trans "Explora las criaturas mágicas del mundo de Harry Potter." %}</p>
       </div>
     </div>
 
     <!-- Diapositiva 2 -->
     <div class="slide slide2">
       <div class="carrusel-texto">
-        <h2><a href="{% url 'criaturas' %}">CRIATURAS</a></h2>
-        <p>Descubre todas las criaturas registradas.</p>
+        <h2><a href="{% url 'criaturas' %}">{% trans "CRIATURAS" %}</a></h2>
+        <p>{% trans "Descubre todas las criaturas registradas." %}</p>
       </div>
     </div>
 
     <!-- Diapositiva 3 -->
     <div class="slide slide3">
       <div class="carrusel-texto">
-        <h2><a href="{% url 'razas' %}">RAZAS</a></h2>
-        <p>Conoce las razas mágicas que habitan este mundo.</p>
+        <h2><a href="{% url 'razas' %}">{% trans "RAZAS" %}</a></h2>
+        <p>{% trans "Conoce las razas mágicas que habitan este mundo." %}</p>
       </div>
     </div>
 
     <!-- Diapositiva 4 -->
     <div class="slide slide4">
       <div class="carrusel-texto">
-        <h2><a href="{% url 'peligros' %}">CATEGORÍAS DE PELIGRO</a></h2>
-        <p>Clasifica a las criaturas según su nivel de amenaza.</p>
+        <h2><a href="{% url 'peligros' %}">{% trans "CATEGORÍAS DE PELIGRO" %}</a></h2>
+        <p>{% trans "Clasifica a las criaturas según su nivel de amenaza." %}</p>
       </div>
     </div>
 
@@ -60,23 +61,18 @@
 <section class="bienvenida">
   <div class="bienvenida-contenido">
     <div class="imagen-bienvenida">
-      <img src="{% static 'img/bienvenida.jpg' %}" alt="Imagen de bienvenida">
+      <img src="{% static 'img/bienvenida.jpg' %}" alt="{% trans 'Imagen de bienvenida' %}">
     </div>
     <div class="texto-bienvenida">
-      <h2>Bienvenido al Bestiario</h2>
+      <h2>{% trans "Bienvenido al Bestiario" %}</h2>
       <p>
-        Explora un catálogo de criaturas fascinantes, desde dragones majestuosos hasta pequeños seres mágicos.
-        Aprende sobre sus razas, hábitats y niveles de peligro.
+        {% trans "Explora un catálogo de criaturas fascinantes, desde dragones majestuosos hasta pequeños seres mágicos. Aprende sobre sus razas, hábitats y niveles de peligro." %}
       </p>
       <p>
-        Este bestiario recopila información completa sobre todas las criaturas mágicas del universo de Harry Potter,
-        clasificadas por raza y nivel de peligrosidad. Descubre dónde habitan, cuáles son sus características distintivas
-        y qué las hace especiales en el mundo mágico.
+        {% trans "Este bestiario recopila información completa sobre todas las criaturas mágicas del universo de Harry Potter, clasificadas por raza y nivel de peligrosidad." %}
       </p>
       <p>
-        Navega a través de nuestras secciones para explorar cada criatura en detalle, conocer sus orígenes legendarios
-        y entender su importancia en la historia. Desde el Phoenix resucitador hasta el Basilisco mortal, cada criatura
-        tiene su propia historia que contar.
+        {% trans "Navega a través de nuestras secciones para explorar cada criatura en detalle y conocer sus orígenes legendarios." %}
       </p>
     </div>
   </div>
@@ -84,7 +80,7 @@
 
 <!-- Carrusel de Razas -->
 <section class="razas-carrusel">
-  <h2>Descubre las Razas</h2>
+  <h2>{% trans "Descubre las Razas" %}</h2>
   <div class="carrusel-razas">
     <button class="prev raza-prev">❮</button>
     <div class="razas-container">

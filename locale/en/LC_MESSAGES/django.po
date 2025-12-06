@@ -1,0 +1,189 @@
+# English translations for Bestiario Harry Potter
+# Copyright (C) 2025
+# This file is distributed under the same license as the bestiarioHP project.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bestiarioHP 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-01 00:00+0000\n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/base.html
+msgid "Harry Potter Bestiary"
+msgstr "Harry Potter Bestiary"
+
+#: templates/base.html
+msgid "Inicio"
+msgstr "Home"
+
+#: templates/base.html
+msgid "Criaturas"
+msgstr "Creatures"
+
+#: templates/base.html
+msgid "Razas"
+msgstr "Races"
+
+#: templates/base.html
+msgid "Categorías de peligro"
+msgstr "Danger Categories"
+
+#: templates/base.html
+msgid "Sobre el Bestiario"
+msgstr "About the Bestiary"
+
+#: templates/base.html
+msgid "Un catálogo completo de criaturas mágicas del universo de Harry Potter, clasificadas por raza y nivel de peligro."
+msgstr "A complete catalog of magical creatures from the Harry Potter universe, classified by race and danger level."
+
+#: templates/base.html
+msgid "Contacto"
+msgstr "Contact"
+
+#: templates/base.html
+msgid "Información Legal"
+msgstr "Legal Information"
+
+#: templates/base.html
+msgid "Bestiario Harry Potter"
+msgstr "Harry Potter Bestiary"
+
+#: templates/base.html
+msgid "Todos los derechos reservados"
+msgstr "All rights reserved"
+
+#: templates/base.html
+msgid "Validación"
+msgstr "Validation"
+
+#: templates/base.html
+msgid "¡CSS Válido!"
+msgstr "Valid CSS!"
+
+#: templates/index.html
+msgid "Bienvenido al Bestiario"
+msgstr "Welcome to the Bestiary"
+
+#: templates/index.html
+msgid "Explora el fascinante mundo de las criaturas mágicas"
+msgstr "Explore the fascinating world of magical creatures"
+
+#: templates/index.html
+msgid "Ver criaturas"
+msgstr "View creatures"
+
+#: templates/index.html
+msgid "Nuestras Razas"
+msgstr "Our Races"
+
+#: templates/criaturas/lista.html
+msgid "Lista de Criaturas"
+msgstr "Creatures List"
+
+#: templates/criaturas/lista.html
+msgid "Buscar criatura..."
+msgstr "Search creature..."
+
+#: templates/criaturas/lista.html
+msgid "Buscar"
+msgstr "Search"
+
+#: templates/criaturas/detalle.html
+msgid "Descripción"
+msgstr "Description"
+
+#: templates/criaturas/detalle.html
+msgid "Características"
+msgstr "Characteristics"
+
+#: templates/criaturas/detalle.html
+msgid "Dónde se encuentra"
+msgstr "Where it is found"
+
+#: templates/criaturas/detalle.html
+msgid "Raza"
+msgstr "Race"
+
+#: templates/criaturas/detalle.html
+msgid "Nivel de Peligro"
+msgstr "Danger Level"
+
+#: templates/criaturas/detalle.html
+msgid "Volver a la lista"
+msgstr "Back to list"
+
+#: templates/razas/lista.html
+msgid "Lista de Razas"
+msgstr "Races List"
+
+#: templates/razas/detalle.html
+msgid "Criaturas de esta raza"
+msgstr "Creatures of this race"
+
+#: templates/peligros/lista.html
+msgid "Categorías de Peligro"
+msgstr "Danger Categories"
+
+#: templates/peligros/detalle.html
+msgid "Criaturas con este nivel de peligro"
+msgstr "Creatures with this danger level"
+
+#: settings.py
+msgid "Español"
+msgstr "Spanish"
+
+#: settings.py
+msgid "English"
+msgstr "English"
+
+#: templates/index.html - Carrusel
+msgid "BESTIARIO HARRY POTTER"
+msgstr "HARRY POTTER BESTIARY"
+
+msgid "Explora las criaturas mágicas del mundo de Harry Potter."
+msgstr "Explore the magical creatures of the Harry Potter world."
+
+msgid "CRIATURAS"
+msgstr "CREATURES"
+
+msgid "Descubre todas las criaturas registradas."
+msgstr "Discover all registered creatures."
+
+msgid "RAZAS"
+msgstr "RACES"
+
+msgid "Conoce las razas mágicas que habitan este mundo."
+msgstr "Learn about the magical races that inhabit this world."
+
+msgid "CATEGORÍAS DE PELIGRO"
+msgstr "DANGER CATEGORIES"
+
+msgid "Clasifica a las criaturas según su nivel de amenaza."
+msgstr "Classify creatures according to their threat level."
+
+#: templates/index.html - Bienvenida
+msgid "Imagen de bienvenida"
+msgstr "Welcome image"
+
+msgid "Explora un catálogo de criaturas fascinantes, desde dragones majestuosos hasta pequeños seres mágicos. Aprende sobre sus razas, hábitats y niveles de peligro."
+msgstr "Explore a catalog of fascinating creatures, from majestic dragons to small magical beings. Learn about their races, habitats and danger levels."
+
+msgid "Este bestiario recopila información completa sobre todas las criaturas mágicas del universo de Harry Potter, clasificadas por raza y nivel de peligrosidad."
+msgstr "This bestiary compiles complete information about all magical creatures from the Harry Potter universe, classified by race and danger level."
+
+msgid "Navega a través de nuestras secciones para explorar cada criatura en detalle y conocer sus orígenes legendarios."
+msgstr "Navigate through our sections to explore each creature in detail and learn about their legendary origins."
+
+msgid "Descubre las Razas"
+msgstr "Discover the Races"
+
+msgid "(Sin criaturas registradas)"
+msgstr "(No creatures registered)"

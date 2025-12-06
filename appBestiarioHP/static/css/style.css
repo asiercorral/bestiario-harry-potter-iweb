@@ -99,6 +99,39 @@ header h1 {
   font-weight: bold;
 }
 
+/* Selector de idioma */
+.language-selector {
+  margin-left: 1rem;
+}
+
+.language-selector form {
+  margin: 0;
+  padding: 0;
+}
+
+.language-selector select {
+  background-color: #1a1a3e;
+  color: #d7c77d;
+  border: 1px solid #d7c77d;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.language-selector select:hover {
+  background-color: #2a2a5e;
+  border-color: #f5e56b;
+}
+
+.language-selector select:focus {
+  outline: none;
+  border-color: #f5e56b;
+  box-shadow: 0 0 5px rgba(245, 229, 107, 0.5);
+}
+
 /*Main*/
 main {
   padding: 2em;

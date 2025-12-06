@@ -16,8 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls.i18n import i18n_patterns
 
+# URLs sin prefijo de idioma
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),  # Para cambiar idioma
+]
+
+# URLs con prefijo de idioma (ej: /es/, /en/)
+urlpatterns += i18n_patterns(
     path('', include('appBestiarioHP.urls')),  # redirige a la app
     path('admin/', admin.site.urls),
-]
+    prefix_default_language=False,  # No añade prefijo para el idioma por defecto (es)
+)

@@ -1,11 +1,12 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <title>{% block title %}Harry Potter Bestiary{% endblock %}</title>
+  <title>{% block title %}{% trans "Harry Potter Bestiary" %}{% endblock %}</title>
 </head>
 <body>
   <!-- Barra de navegacion -->
@@ -13,14 +14,30 @@
   <div class="navbar">
     <div class="logo-titulo">
       <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo">
-      <h1><a href="{% url 'index' %}">Harry Potter Bestiary</a></h1>
+      <h1><a href="{% url 'index' %}">{% trans "Harry Potter Bestiary" %}</a></h1>
     </div>
     <nav>
       <ul class="nav">
-        <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">Inicio</a></li>
-        <li><a href="{% url 'criaturas' %}" class="{% if request.resolver_match.url_name == 'criaturas' %}active{% endif %}">Criaturas</a></li>
-        <li><a href="{% url 'razas' %}" class="{% if request.resolver_match.url_name == 'razas' %}active{% endif %}">Razas</a></li>
-        <li><a href="{% url 'peligros' %}" class="{% if request.resolver_match.url_name == 'peligros' %}active{% endif %}">Categorías de peligro</a></li>
+        <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">{% trans "Inicio" %}</a></li>
+        <li><a href="{% url 'criaturas' %}" class="{% if request.resolver_match.url_name == 'criaturas' %}active{% endif %}">{% trans "Criaturas" %}</a></li>
+        <li><a href="{% url 'razas' %}" class="{% if request.resolver_match.url_name == 'razas' %}active{% endif %}">{% trans "Razas" %}</a></li>
+        <li><a href="{% url 'peligros' %}" class="{% if request.resolver_match.url_name == 'peligros' %}active{% endif %}">{% trans "Categorías de peligro" %}</a></li>
+        <!-- Selector de idioma -->
+        <li class="language-selector">
+          <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="/">
+            <select name="language" onchange="this.form.submit()">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% for lang_code, lang_name in LANGUAGES %}
+                <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
+                  {{ lang_name }}
+                </option>
+              {% endfor %}
+            </select>
+          </form>
+        </li>
     </ul>
   </nav>
   </div>
@@ -38,27 +55,27 @@
   <footer>
     <div class="footer-content">
       <div class="footer-section">
-        <h4>Sobre el Bestiario</h4>
-        <p>Un catálogo completo de criaturas mágicas del universo de Harry Potter, clasificadas por raza y nivel de peligro.</p>
+        <h4>{% trans "Sobre el Bestiario" %}</h4>
+        <p>{% trans "Un catálogo completo de criaturas mágicas del universo de Harry Potter, clasificadas por raza y nivel de peligro." %}</p>
       </div>
       <div class="footer-section">
-        <h4>Contacto</h4>
+        <h4>{% trans "Contacto" %}</h4>
         <p>info@bestiario-hp.com</p>
         <p>+34 91 234 5678</p>
         <p>Universidad de Deusto, Bilbao</p>
       </div>
       <div class="footer-section">
-        <h4>Información Legal</h4>
-        <p>&copy; 2025 Bestiario Harry Potter</p>
-        <p>Todos los derechos reservados</p>
+        <h4>{% trans "Información Legal" %}</h4>
+        <p>&copy; 2025 {% trans "Bestiario Harry Potter" %}</p>
+        <p>{% trans "Todos los derechos reservados" %}</p>
       </div>
       <div class="footer-section">
-        <h4>Validación</h4>
+        <h4>{% trans "Validación" %}</h4>
         <p>
           <a href="https://jigsaw.w3.org/css-validator/check/referer">
             <img class="css-validator-badge"
               src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-              alt="¡CSS Válido!" />
+              alt="{% trans '¡CSS Válido!' %}" />
           </a>
         </p>
       </div>

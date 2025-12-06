@@ -1,0 +1,145 @@
+# Traducciones al español para Bestiario Harry Potter
+# Copyright (C) 2025
+# Este archivo se distribuye bajo la misma licencia que el proyecto bestiarioHP.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bestiarioHP 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-01 00:00+0000\n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/base.html
+msgid "Harry Potter Bestiary"
+msgstr "Bestiario de Harry Potter"
+
+#: templates/base.html
+msgid "Inicio"
+msgstr "Inicio"
+
+#: templates/base.html
+msgid "Criaturas"
+msgstr "Criaturas"
+
+#: templates/base.html
+msgid "Razas"
+msgstr "Razas"
+
+#: templates/base.html
+msgid "Categorías de peligro"
+msgstr "Categorías de peligro"
+
+#: templates/base.html
+msgid "Sobre el Bestiario"
+msgstr "Sobre el Bestiario"
+
+#: templates/base.html
+msgid "Un catálogo completo de criaturas mágicas del universo de Harry Potter, clasificadas por raza y nivel de peligro."
+msgstr "Un catálogo completo de criaturas mágicas del universo de Harry Potter, clasificadas por raza y nivel de peligro."
+
+#: templates/base.html
+msgid "Contacto"
+msgstr "Contacto"
+
+#: templates/base.html
+msgid "Información Legal"
+msgstr "Información Legal"
+
+#: templates/base.html
+msgid "Bestiario Harry Potter"
+msgstr "Bestiario Harry Potter"
+
+#: templates/base.html
+msgid "Todos los derechos reservados"
+msgstr "Todos los derechos reservados"
+
+#: templates/base.html
+msgid "Validación"
+msgstr "Validación"
+
+#: templates/base.html
+msgid "¡CSS Válido!"
+msgstr "¡CSS Válido!"
+
+#: templates/index.html
+msgid "Bienvenido al Bestiario"
+msgstr "Bienvenido al Bestiario"
+
+#: templates/index.html
+msgid "Explora el fascinante mundo de las criaturas mágicas"
+msgstr "Explora el fascinante mundo de las criaturas mágicas"
+
+#: templates/index.html
+msgid "Ver criaturas"
+msgstr "Ver criaturas"
+
+#: templates/index.html
+msgid "Nuestras Razas"
+msgstr "Nuestras Razas"
+
+#: templates/criaturas/lista.html
+msgid "Lista de Criaturas"
+msgstr "Lista de Criaturas"
+
+#: templates/criaturas/lista.html
+msgid "Buscar criatura..."
+msgstr "Buscar criatura..."
+
+#: templates/criaturas/lista.html
+msgid "Buscar"
+msgstr "Buscar"
+
+#: templates/criaturas/detalle.html
+msgid "Descripción"
+msgstr "Descripción"
+
+#: templates/criaturas/detalle.html
+msgid "Características"
+msgstr "Características"
+
+#: templates/criaturas/detalle.html
+msgid "Dónde se encuentra"
+msgstr "Dónde se encuentra"
+
+#: templates/criaturas/detalle.html
+msgid "Raza"
+msgstr "Raza"
+
+#: templates/criaturas/detalle.html
+msgid "Nivel de Peligro"
+msgstr "Nivel de Peligro"
+
+#: templates/criaturas/detalle.html
+msgid "Volver a la lista"
+msgstr "Volver a la lista"
+
+#: templates/razas/lista.html
+msgid "Lista de Razas"
+msgstr "Lista de Razas"
+
+#: templates/razas/detalle.html
+msgid "Criaturas de esta raza"
+msgstr "Criaturas de esta raza"
+
+#: templates/peligros/lista.html
+msgid "Categorías de Peligro"
+msgstr "Categorías de Peligro"
+
+#: templates/peligros/detalle.html
+msgid "Criaturas con este nivel de peligro"
+msgstr "Criaturas con este nivel de peligro"
+
+#: settings.py
+msgid "Español"
+msgstr "Español"
+
+#: settings.py
+msgid "English"
+msgstr "Inglés"
