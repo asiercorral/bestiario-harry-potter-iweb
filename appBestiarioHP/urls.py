@@ -15,7 +15,4 @@ urlpatterns = [
     # Categorías de peligro
     path('peligros/', views.index_peligros, name='peligros'),
     path('peligros/<int:peligro_id>/', views.show_peligro, name='detalle_peligro'),
-
-    # Agenda
-    path('agenda/', views.agenda, name='agenda'),
 ]

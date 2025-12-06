@@ -64,8 +64,3 @@ def show_peligro(request, peligro_id):
     criaturas = peligro.criatura_set.all()
     context = {'peligro': peligro, 'criaturas': criaturas}
     return render(request, 'peligros/detalle.html', context)
-
-
-# Agenda
-def agenda(request):
-    return render(request, 'agenda/agenda.html')
