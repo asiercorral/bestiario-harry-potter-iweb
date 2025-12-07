@@ -1,8 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Lista de criaturas{% endblock %}
 {% block content %}
   <h2>Lista de Criaturas</h2>
-  <ul>
+  
+  <div class="buscador">
+    <input type="text" id="buscar-criatura" placeholder="Buscar criatura...">
+  </div>
+
+  <ul id="lista-criaturas">
     {% for c in criaturas %}
       <li>
         <a href="{% url 'detalle_criatura' criatura_id=c.id %}">{{ c.nombre }}</a>
@@ -10,4 +16,54 @@
       </li>
     {% endfor %}
   </ul>
+
+  <div id="resultados-ajax" style="display:none;"></div>
+
+  <script>
+  var inputBuscar = document.getElementById('buscar-criatura');
+  var listaOriginal = document.getElementById('lista-criaturas');
+  var resultadosAjax = document.getElementById('resultados-ajax');
+  var timeout = null;
+
+  inputBuscar.addEventListener('input', function() {
+      clearTimeout(timeout);
+      var query = this.value.trim();
+      
+      if (query.length < 2) {
+          listaOriginal.style.display = 'block';
+          resultadosAjax.style.display = 'none';
+          return;
+      }
+
+      timeout = setTimeout(function() {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', '/api/buscar-criaturas/?q=' + encodeURIComponent(query), true);
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  var resp = JSON.parse(xhr.responseText);
+                  mostrarResultados(resp.criaturas);
+              }
+          };
+          xhr.send();
+      }, 300);
+  });
+
+  function mostrarResultados(criaturas) {
+      listaOriginal.style.display = 'none';
+      resultadosAjax.style.display = 'block';
+      
+      if (criaturas.length === 0) {
+          resultadosAjax.innerHTML = '<p>No se encontraron criaturas.</p>';
+          return;
+      }
+
+      var html = '<ul>';
+      for (var i = 0; i < criaturas.length; i++) {
+          var c = criaturas[i];
+          html += '<li><a href="/criaturas/' + c.id + '/">' + c.nombre + '</a> — ' + c.categoria_peligro + '</li>';
+      }
+      html += '</ul>';
+      resultadosAjax.innerHTML = html;
+  }
+  </script>
 {% endblock %}

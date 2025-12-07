@@ -4,11 +4,7 @@ from django.http import JsonResponse
 from .models import Criatura, Raza, Peligro
 
 
-# =============================================================================
-# VISTAS BASADAS EN CLASES (Class-Based Views)
-# =============================================================================
-
-# Vista de inicio (mantenemos como función por la lógica especial)
+# Pagina principal
 def index(request):
     razas = get_list_or_404(Raza.objects.order_by('nombre'))
     criaturas_usadas = set()
@@ -25,7 +21,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-# Lista de criaturas - Vista basada en clase
+# Vistas de criaturas
 class CriaturaListView(ListView):
     model = Criatura
     template_name = 'criaturas/lista.html'
@@ -33,7 +29,6 @@ class CriaturaListView(ListView):
     ordering = ['nombre']
 
 
-# Detalle de criatura - Vista basada en clase
 class CriaturaDetailView(DetailView):
     model = Criatura
     template_name = 'criaturas/detalle.html'
@@ -41,7 +36,7 @@ class CriaturaDetailView(DetailView):
     pk_url_kwarg = 'criatura_id'
 
 
-# Lista de razas - Vista basada en clase
+# Vistas de razas
 class RazaListView(ListView):
     model = Raza
     template_name = 'razas/lista.html'
@@ -49,7 +44,6 @@ class RazaListView(ListView):
     ordering = ['nombre']
 
 
-# Detalle de raza - Vista basada en clase
 class RazaDetailView(DetailView):
     model = Raza
     template_name = 'razas/detalle.html'
@@ -62,7 +56,7 @@ class RazaDetailView(DetailView):
         return context
 
 
-# Lista de peligros - Vista basada en clase
+# Vistas de peligros
 class PeligroListView(ListView):
     model = Peligro
     template_name = 'peligros/lista.html'
@@ -70,7 +64,6 @@ class PeligroListView(ListView):
     ordering = ['nombre']
 
 
-# Detalle de peligro - Vista basada en clase
 class PeligroDetailView(DetailView):
     model = Peligro
     template_name = 'peligros/detalle.html'
@@ -83,12 +76,9 @@ class PeligroDetailView(DetailView):
         return context
 
 
-# =============================================================================
-# API ENDPOINTS PARA AJAX
-# =============================================================================
-
+# API para AJAX
 def api_criaturas(request):
-    """API endpoint para obtener criaturas en formato JSON"""
+    # Devuelve todas las criaturas en JSON
     criaturas = Criatura.objects.all().order_by('nombre')
     data = []
     for c in criaturas:
@@ -104,7 +94,7 @@ def api_criaturas(request):
 
 
 def api_buscar_criaturas(request):
-    """API endpoint para buscar criaturas por nombre"""
+    # Busca criaturas por nombre
     query = request.GET.get('q', '')
     criaturas = Criatura.objects.filter(nombre__icontains=query).order_by('nombre')
     data = []
@@ -116,3 +106,16 @@ def api_buscar_criaturas(request):
             'categoria_peligro': c.categoria_peligro.nombre,
         })
     return JsonResponse({'criaturas': data, 'query': query})
+
+
+def api_buscar_razas(request):
+    query = request.GET.get('q', '')
+    razas = Raza.objects.filter(nombre__icontains=query).order_by('nombre')
+    data = []
+    for r in razas:
+        data.append({
+            'id': r.id,
+            'nombre': r.nombre,
+            'descripcion': r.descripcion[:80] + '...' if len(r.descripcion) > 80 else r.descripcion,
+        })
+    return JsonResponse({'razas': data, 'query': query})

@@ -2,9 +2,64 @@
 {% block title %}Lista de razas{% endblock %}
 {% block content %}
   <h2>Razas</h2>
-  <ul>
+  
+  <div class="buscador">
+    <input type="text" id="buscar-raza" placeholder="Buscar raza...">
+  </div>
+
+  <ul id="lista-razas">
     {% for r in razas %}
       <li><a href="{% url 'detalle_raza' raza_id=r.id %}">{{ r.nombre }}</a></li>
     {% endfor %}
   </ul>
+
+  <div id="resultados-ajax" style="display:none;"></div>
+
+  <script>
+  var inputBuscar = document.getElementById('buscar-raza');
+  var listaOriginal = document.getElementById('lista-razas');
+  var resultadosAjax = document.getElementById('resultados-ajax');
+  var timeout = null;
+
+  inputBuscar.addEventListener('input', function() {
+      clearTimeout(timeout);
+      var query = this.value.trim();
+      
+      if (query.length < 2) {
+          listaOriginal.style.display = 'block';
+          resultadosAjax.style.display = 'none';
+          return;
+      }
+
+      timeout = setTimeout(function() {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', '/api/buscar-razas/?q=' + encodeURIComponent(query), true);
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  var resp = JSON.parse(xhr.responseText);
+                  mostrarResultados(resp.razas);
+              }
+          };
+          xhr.send();
+      }, 300);
+  });
+
+  function mostrarResultados(razas) {
+      listaOriginal.style.display = 'none';
+      resultadosAjax.style.display = 'block';
+      
+      if (razas.length === 0) {
+          resultadosAjax.innerHTML = '<p>No se encontraron razas.</p>';
+          return;
+      }
+
+      var html = '<ul>';
+      for (var i = 0; i < razas.length; i++) {
+          var r = razas[i];
+          html += '<li><a href="/razas/' + r.id + '/">' + r.nombre + '</a></li>';
+      }
+      html += '</ul>';
+      resultadosAjax.innerHTML = html;
+  }
+  </script>
 {% endblock %}

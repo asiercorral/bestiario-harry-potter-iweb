@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Criatura, Raza, Peligro
 
-# Personalización del sitio de administración
+# Cabecera del admin
 admin.site.site_header = "Bestiario de Harry Potter - Administración"
 admin.site.site_title = "Admin Bestiario HP"
 admin.site.index_title = "Panel de Gestión del Bestiario"
@@ -9,13 +9,11 @@ admin.site.index_title = "Panel de Gestión del Bestiario"
 
 @admin.register(Raza)
 class RazaAdmin(admin.ModelAdmin):
-    """Administración personalizada para el modelo Raza"""
     list_display = ('nombre', 'descripcion_corta')
     search_fields = ('nombre', 'descripcion')
     ordering = ('nombre',)
     
     def descripcion_corta(self, obj):
-        """Muestra los primeros 50 caracteres de la descripción"""
         if obj.descripcion:
             return obj.descripcion[:50] + "..." if len(obj.descripcion) > 50 else obj.descripcion
         return "-"
@@ -24,13 +22,11 @@ class RazaAdmin(admin.ModelAdmin):
 
 @admin.register(Peligro)
 class PeligroAdmin(admin.ModelAdmin):
-    """Administración personalizada para el modelo Peligro (Clasificación del Ministerio)"""
     list_display = ('nombre', 'descripcion_corta')
     search_fields = ('nombre', 'descripcion')
     ordering = ('nombre',)
     
     def descripcion_corta(self, obj):
-        """Muestra los primeros 50 caracteres de la descripción"""
         if obj.descripcion:
             return obj.descripcion[:50] + "..." if len(obj.descripcion) > 50 else obj.descripcion
         return "-"
@@ -39,13 +35,12 @@ class PeligroAdmin(admin.ModelAdmin):
 
 @admin.register(Criatura)
 class CriaturaAdmin(admin.ModelAdmin):
-    """Administración personalizada para el modelo Criatura"""
     list_display = ('nombre', 'get_razas', 'categoria_peligro', 'tiene_imagen')
     list_filter = ('raza', 'categoria_peligro')
     search_fields = ('nombre', 'descripcion', 'donde_se_encuentra')
     ordering = ('nombre',)
     list_per_page = 20
-    filter_horizontal = ('raza',)  # Widget mejorado para ManyToMany
+    filter_horizontal = ('raza',)
     
     fieldsets = (
         ('Información Básica', {
@@ -58,17 +53,14 @@ class CriaturaAdmin(admin.ModelAdmin):
         ('Detalles Adicionales', {
             'fields': ('caracteristicas', 'donde_se_encuentra'),
             'classes': ('collapse',),
-            'description': 'Información adicional sobre la criatura'
         }),
     )
     
     def get_razas(self, obj):
-        """Muestra las razas de la criatura"""
         return ", ".join([r.nombre for r in obj.raza.all()])
     get_razas.short_description = "Razas"
     
     def tiene_imagen(self, obj):
-        """Indica si la criatura tiene imagen asociada"""
         if hasattr(obj, 'imagen'):
             return bool(obj.imagen)
         return False

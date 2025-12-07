@@ -132,6 +132,32 @@ header h1 {
   box-shadow: 0 0 5px rgba(245, 229, 107, 0.5);
 }
 
+.buscador {
+  margin-bottom: 1.5rem;
+}
+
+.buscador input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.7rem 1rem;
+  background-color: #1a1a3e;
+  border: 1px solid #d7c77d;
+  border-radius: 5px;
+  color: #f5f5f5;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+}
+
+.buscador input:focus {
+  outline: none;
+  border-color: #f5e56b;
+  box-shadow: 0 0 8px rgba(245, 229, 107, 0.4);
+}
+
+.buscador input::placeholder {
+  color: #888;
+}
+
 /*Main*/
 main {
   padding: 2em;

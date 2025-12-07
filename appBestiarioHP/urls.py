@@ -23,4 +23,5 @@ urlpatterns = [
 
     # API para búsqueda AJAX
     path('api/buscar-criaturas/', views.api_buscar_criaturas, name='api_buscar_criaturas'),
+    path('api/buscar-razas/', views.api_buscar_razas, name='api_buscar_razas'),
 ]
