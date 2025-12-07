@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="es" prefix="og: http://ogp.me/ns#">
+<html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AgendaVue - Agenda de contactos desarrollada con Vue.js. Gestiona tus contactos de forma sencilla.">
+    <meta name="description" content="Agenda de contactos desarrollada con Vue.js. Gestiona tus contactos de forma sencilla.">
     <meta name="author" content="Universidad de Deusto">
     <meta name="keywords" content="agenda, contactos, vue, vuejs, aplicacion web">
 
-    <!-- Facebook -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://agendavue-deusto.netlify.app/">
     <meta property="og:title" content="AgendaVue - Gestiona tus contactos">
@@ -16,7 +15,7 @@
     <meta property="og:site_name" content="AgendaVue">
     <meta property="og:locale" content="es_ES">
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:url" content="https://agendavue-deusto.netlify.app/">
     <meta name="twitter:title" content="AgendaVue - Gestiona tus contactos">
@@ -56,11 +55,11 @@
 <body vocab="https://schema.org/" typeof="WebPage">
     <!-- Header -->
     <header>
-        <div class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="navbar">
             <div class="logo-titulo">
                 <h1 property="name">AgendaVue</h1>
             </div>
-            <nav>
+            <nav aria-label="Navegación principal">
                 <ul>
                     <li><a href="#contactos">Contactos</a></li>
                     <li><a href="#nuevo">Añadir</a></li>
@@ -70,102 +69,29 @@
         </div>
     </header>
 
-    <!-- Main content -->
+    <!-- Main content - Vue App -->
     <main id="content">
         <div class="agenda-container" id="app" itemscope itemtype="https://schema.org/ContactPage">
-            <!-- Header -->
             <div class="agenda-header">
                 <h1 itemprop="name">AgendaVue</h1>
                 <p itemprop="description">Gestiona tus contactos de forma sencilla</p>
             </div>
 
             <!-- Seccion Contactos -->
-            <section id="contactos" class="seccion-agenda" aria-labelledby="titulo-contactos">
-                <h2 id="titulo-contactos">Contactos</h2>
-                
-                <div v-if="contactos.length > 0">
-                    <table class="contactos-tabla" aria-label="Lista de contactos">
-                        <thead>
-                            <tr class="contactos-header">
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Teléfono</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="contacto-fila" 
-                                v-for="(contacto, index) in contactos" 
-                                :key="index"
-                                itemscope 
-                                itemtype="https://schema.org/Person">
-                                <td itemprop="name">{{ contacto.nombre }}</td>
-                                <td itemprop="email">{{ contacto.email }}</td>
-                                <td itemprop="telephone">{{ contacto.telefono }}</td>
-                                <td>
-                                    <button class="btn-eliminar" 
-                                            @click="eliminarContacto(index)" 
-                                            title="Eliminar contacto"
-                                            aria-label="Eliminar contacto">
-                                        ✕
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div v-else class="sin-contactos" role="status" aria-live="polite">
-                    <p>No se ha encontrado ningún contacto.</p>
-                    <p>¡Añade tu primer contacto!</p>
-                </div>
+            <section id="contactos" class="seccion-agenda">
+                <h2>Contactos</h2>
+                <!-- Vue renderiza aquí -->
             </section>
 
             <!-- Seccion Añadir Contacto -->
-            <section id="nuevo" class="seccion-agenda" aria-labelledby="titulo-anadir">
-                <h2 id="titulo-anadir">Añadir Contacto</h2>
-                
-                <form class="formulario-contacto" 
-                      @submit.prevent="agregarContacto"
-                      aria-label="Formulario para añadir contacto">
-                    <div class="form-grupo">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" 
-                               id="nombre" 
-                               v-model="nuevoContacto.nombre" 
-                               placeholder="Nombre del contacto" 
-                               required>
-                    </div>
-                    
-                    <div class="form-grupo">
-                        <label for="email">Email</label>
-                        <input type="email" 
-                               id="email" 
-                               v-model="nuevoContacto.email" 
-                               placeholder="correo@ejemplo.com" 
-                               required>
-                    </div>
-                    
-                    <div class="form-grupo">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" 
-                               id="telefono" 
-                               v-model="nuevoContacto.telefono" 
-                               placeholder="Número de teléfono" 
-                               required>
-                    </div>
-                    
-                    <div class="form-acciones">
-                        <button type="submit" class="btn-agregar">
-                            Añadir Contacto
-                        </button>
-                    </div>
-                </form>
+            <section id="nuevo" class="seccion-agenda">
+                <h2>Añadir Contacto</h2>
+                <!-- Vue renderiza aquí -->
             </section>
 
             <!-- Seccion Acerca de -->
-            <section id="about" class="seccion-agenda" aria-labelledby="titulo-acerca" property="about" typeof="SoftwareApplication">
-                <h2 id="titulo-acerca">Acerca de</h2>
+            <section id="about" class="seccion-agenda" property="about" typeof="SoftwareApplication">
+                <h2>Acerca de</h2>
                 
                 <div class="acerca-de">
                     <p property="description">
@@ -178,13 +104,13 @@
                     
                     <!-- Botones de compartir en redes sociales -->
                     <div class="social-share">
-                        <a href="https://twitter.com/intent/tweet?text=Descubre%20AgendaVue%20-%20Gestiona%20tus%20contactos&url=https://agendavue-deusto.netlify.app/" 
+                        <a href="https://twitter.com/intent/tweet?text=Descubre%20AgendaVue%20-%20Gestiona%20tus%20contactos&amp;url=https://agendavue-deusto.netlify.app/" 
                            class="social-btn twitter"
                            target="_blank"
                            rel="noopener noreferrer"
                            aria-label="Compartir en Twitter">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
                             </svg>
                             Compartir en X
                         </a>
@@ -193,8 +119,8 @@
                            target="_blank"
                            rel="noopener noreferrer"
                            aria-label="Compartir en Facebook">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
                             </svg>
                             Compartir en Facebook
                         </a>
@@ -204,7 +130,7 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer con Microdata -->
     <footer>
         <div class="footer-content" itemscope itemtype="https://schema.org/Organization">
             <p>© <span itemprop="copyrightYear">2025</span> <span itemprop="name">AgendaVue</span></p>
@@ -219,49 +145,117 @@
         </div>
     </footer>
 
-    <!-- Vue.js -->
-    <script src="vue.js"></script>
+    <!-- Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                contactos: [],
-                nuevoContacto: {
-                    nombre: '',
-                    email: '',
-                    telefono: ''
-                }
-            },
-            mounted: function() {
-                var guardados = localStorage.getItem('contactosAgendaVue');
-                if (guardados) {
-                    this.contactos = JSON.parse(guardados);
-                }
-            },
-            methods: {
-                agregarContacto: function() {
-                    if (this.nuevoContacto.nombre && this.nuevoContacto.email && this.nuevoContacto.telefono) {
-                        this.contactos.push({
-                            nombre: this.nuevoContacto.nombre,
-                            email: this.nuevoContacto.email,
-                            telefono: this.nuevoContacto.telefono
-                        });
-                        this.guardarContactos();
-                        this.nuevoContacto = { nombre: '', email: '', telefono: '' };
-                    }
-                },
-                eliminarContacto: function(index) {
-                    if (confirm('¿Estás seguro de que quieres eliminar este contacto?')) {
-                        this.contactos.splice(index, 1);
-                        this.guardarContactos();
-                    }
-                },
-                guardarContactos: function() {
-                    localStorage.setItem('contactosAgendaVue', JSON.stringify(this.contactos));
-                }
+    new Vue({
+        el: '#app',
+        data: {
+            contactos: [],
+            nuevoContacto: {
+                nombre: '',
+                email: '',
+                telefono: ''
             }
-        });
+        },
+        mounted: function() {
+            // Cargar contactos del localStorage
+            var guardados = localStorage.getItem('contactosAgendaVue');
+            if (guardados) {
+                this.contactos = JSON.parse(guardados);
+            }
+            // Renderizar las secciones dinámicas
+            this.renderizarApp();
+        },
+        methods: {
+            renderizarApp: function() {
+                var self = this;
+                
+                // Sección Contactos
+                var seccionContactos = document.getElementById('contactos');
+                seccionContactos.innerHTML = '<h2>Contactos</h2><div id="lista-contactos"></div>';
+                this.renderizarContactos();
+                
+                // Sección Formulario
+                var seccionNuevo = document.getElementById('nuevo');
+                seccionNuevo.innerHTML = '<h2>Añadir Contacto</h2>' +
+                    '<form id="form-contacto" class="formulario-contacto">' +
+                    '<div class="form-grupo"><label for="input-nombre">Nombre</label>' +
+                    '<input type="text" id="input-nombre" placeholder="Nombre del contacto" required></div>' +
+                    '<div class="form-grupo"><label for="input-email">Email</label>' +
+                    '<input type="email" id="input-email" placeholder="correo@ejemplo.com" required></div>' +
+                    '<div class="form-grupo"><label for="input-telefono">Teléfono</label>' +
+                    '<input type="tel" id="input-telefono" placeholder="Número de teléfono" required></div>' +
+                    '<div class="form-acciones"><button type="submit" class="btn-agregar">Añadir Contacto</button></div>' +
+                    '</form>';
+                
+                document.getElementById('form-contacto').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    self.agregarContacto();
+                });
+            },
+            renderizarContactos: function() {
+                var self = this;
+                var container = document.getElementById('lista-contactos');
+                
+                if (this.contactos.length === 0) {
+                    container.innerHTML = '<div class="sin-contactos">' +
+                        '<p>No se ha encontrado ningún contacto.</p>' +
+                        '<p>¡Añade tu primer contacto!</p></div>';
+                } else {
+                    var html = '<table class="contactos-tabla"><thead><tr class="contactos-header">' +
+                        '<th>Nombre</th><th>Email</th><th>Teléfono</th><th></th></tr></thead><tbody>';
+                    
+                    for (var i = 0; i < this.contactos.length; i++) {
+                        var c = this.contactos[i];
+                        html += '<tr class="contacto-fila" itemscope itemtype="https://schema.org/Person">' +
+                            '<td itemprop="name">' + c.nombre + '</td>' +
+                            '<td itemprop="email">' + c.email + '</td>' +
+                            '<td itemprop="telephone">' + c.telefono + '</td>' +
+                            '<td><button class="btn-eliminar" data-index="' + i + '" title="Eliminar">✕</button></td></tr>';
+                    }
+                    html += '</tbody></table>';
+                    container.innerHTML = html;
+                    
+                    // Event listeners para botones eliminar
+                    var btns = container.querySelectorAll('.btn-eliminar');
+                    btns.forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var idx = parseInt(this.getAttribute('data-index'));
+                            self.eliminarContacto(idx);
+                        });
+                    });
+                }
+            },
+            agregarContacto: function() {
+                var nombre = document.getElementById('input-nombre').value;
+                var email = document.getElementById('input-email').value;
+                var telefono = document.getElementById('input-telefono').value;
+                
+                if (nombre && email && telefono) {
+                    this.contactos.push({
+                        nombre: nombre,
+                        email: email,
+                        telefono: telefono
+                    });
+                    this.guardarContactos();
+                    this.renderizarContactos();
+                    document.getElementById('form-contacto').reset();
+                }
+            },
+            eliminarContacto: function(index) {
+                if (confirm('¿Estás seguro de que quieres eliminar este contacto?')) {
+                    this.contactos.splice(index, 1);
+                    this.guardarContactos();
+                    this.renderizarContactos();
+                }
+            },
+            guardarContactos: function() {
+                localStorage.setItem('contactosAgendaVue', JSON.stringify(this.contactos));
+            }
+        }
+    });
     </script>
 </body>
 </html>
