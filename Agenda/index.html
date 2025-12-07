@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AgendaVue - Agenda de contactos desarrollada con Vue.js. Gestiona tus contactos de forma sencilla.">
+    <meta name="author" content="Universidad de Deusto">
+    <meta name="keywords" content="agenda, contactos, vue, vuejs, aplicacion web">
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agendavue-deusto.netlify.app/">
+    <meta property="og:title" content="AgendaVue - Gestiona tus contactos">
+    <meta property="og:description" content="Aplicación web para gestionar tus contactos de forma sencilla. Desarrollada con Vue.js.">
+    <meta property="og:site_name" content="AgendaVue">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://agendavue-deusto.netlify.app/">
+    <meta name="twitter:title" content="AgendaVue - Gestiona tus contactos">
+    <meta name="twitter:description" content="Aplicación web para gestionar tus contactos de forma sencilla. Desarrollada con Vue.js.">
+
+    <title>AgendaVue</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "AgendaVue",
+        "description": "Aplicación web para gestionar contactos de forma sencilla",
+        "url": "https://agendavue-deusto.netlify.app/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Universidad de Deusto",
+            "url": "https://www.deusto.es"
+        },
+        "datePublished": "2025-12-06",
+        "inLanguage": "es",
+        "isAccessibleForFree": true
+    }
+    </script>
+</head>
+
+<body vocab="https://schema.org/" typeof="WebPage">
+    <!-- Header -->
+    <header>
+        <div class="navbar" role="navigation" aria-label="Navegación principal">
+            <div class="logo-titulo">
+                <h1 property="name">AgendaVue</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#contactos">Contactos</a></li>
+                    <li><a href="#nuevo">Añadir</a></li>
+                    <li><a href="#about">Acerca de</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main id="content">
+        <div class="agenda-container" id="app" itemscope itemtype="https://schema.org/ContactPage">
+            <!-- Header -->
+            <div class="agenda-header">
+                <h1 itemprop="name">AgendaVue</h1>
+                <p itemprop="description">Gestiona tus contactos de forma sencilla</p>
+            </div>
+
+            <!-- Seccion Contactos -->
+            <section id="contactos" class="seccion-agenda" aria-labelledby="titulo-contactos">
+                <h2 id="titulo-contactos">Contactos</h2>
+                
+                <div v-if="contactos.length > 0">
+                    <table class="contactos-tabla" aria-label="Lista de contactos">
+                        <thead>
+                            <tr class="contactos-header">
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Teléfono</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="contacto-fila" 
+                                v-for="(contacto, index) in contactos" 
+                                :key="index"
+                                itemscope 
+                                itemtype="https://schema.org/Person">
+                                <td itemprop="name">{{ contacto.nombre }}</td>
+                                <td itemprop="email">{{ contacto.email }}</td>
+                                <td itemprop="telephone">{{ contacto.telefono }}</td>
+                                <td>
+                                    <button class="btn-eliminar" 
+                                            @click="eliminarContacto(index)" 
+                                            title="Eliminar contacto"
+                                            aria-label="Eliminar contacto">
+                                        ✕
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div v-else class="sin-contactos" role="status" aria-live="polite">
+                    <p>No se ha encontrado ningún contacto.</p>
+                    <p>¡Añade tu primer contacto!</p>
+                </div>
+            </section>
+
+            <!-- Seccion Añadir Contacto -->
+            <section id="nuevo" class="seccion-agenda" aria-labelledby="titulo-anadir">
+                <h2 id="titulo-anadir">Añadir Contacto</h2>
+                
+                <form class="formulario-contacto" 
+                      @submit.prevent="agregarContacto"
+                      aria-label="Formulario para añadir contacto">
+                    <div class="form-grupo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" 
+                               id="nombre" 
+                               v-model="nuevoContacto.nombre" 
+                               placeholder="Nombre del contacto" 
+                               required>
+                    </div>
+                    
+                    <div class="form-grupo">
+                        <label for="email">Email</label>
+                        <input type="email" 
+                               id="email" 
+                               v-model="nuevoContacto.email" 
+                               placeholder="correo@ejemplo.com" 
+                               required>
+                    </div>
+                    
+                    <div class="form-grupo">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" 
+                               id="telefono" 
+                               v-model="nuevoContacto.telefono" 
+                               placeholder="Número de teléfono" 
+                               required>
+                    </div>
+                    
+                    <div class="form-acciones">
+                        <button type="submit" class="btn-agregar">
+                            Añadir Contacto
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Seccion Acerca de -->
+            <section id="about" class="seccion-agenda" aria-labelledby="titulo-acerca" property="about" typeof="SoftwareApplication">
+                <h2 id="titulo-acerca">Acerca de</h2>
+                
+                <div class="acerca-de">
+                    <p property="description">
+                        AgendaVue es una aplicación web sencilla para gestionar tus contactos.<br>
+                        Permite añadir, visualizar y eliminar contactos de forma rápida e intuitiva.
+                    </p>
+                    <p class="destacado">
+                        Desarrollado con <span property="applicationCategory">Vue.js</span>
+                    </p>
+                    
+                    <!-- Botones de compartir en redes sociales -->
+                    <div class="social-share">
+                        <a href="https://twitter.com/intent/tweet?text=Descubre%20AgendaVue%20-%20Gestiona%20tus%20contactos&url=https://agendavue-deusto.netlify.app/" 
+                           class="social-btn twitter"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Compartir en Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                            Compartir en X
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://agendavue-deusto.netlify.app/" 
+                           class="social-btn facebook"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Compartir en Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            Compartir en Facebook
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content" itemscope itemtype="https://schema.org/Organization">
+            <p>© <span itemprop="copyrightYear">2025</span> <span itemprop="name">AgendaVue</span></p>
+            <p>Desarrollado para <span itemprop="memberOf">Universidad de Deusto</span></p>
+            <p>
+                <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                    <img style="border:0;width:88px;height:31px"
+                        src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                        alt="¡CSS Válido!">
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Vue.js -->
+    <script src="vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                contactos: [],
+                nuevoContacto: {
+                    nombre: '',
+                    email: '',
+                    telefono: ''
+                }
+            },
+            mounted: function() {
+                var guardados = localStorage.getItem('contactosAgendaVue');
+                if (guardados) {
+                    this.contactos = JSON.parse(guardados);
+                }
+            },
+            methods: {
+                agregarContacto: function() {
+                    if (this.nuevoContacto.nombre && this.nuevoContacto.email && this.nuevoContacto.telefono) {
+                        this.contactos.push({
+                            nombre: this.nuevoContacto.nombre,
+                            email: this.nuevoContacto.email,
+                            telefono: this.nuevoContacto.telefono
+                        });
+                        this.guardarContactos();
+                        this.nuevoContacto = { nombre: '', email: '', telefono: '' };
+                    }
+                },
+                eliminarContacto: function(index) {
+                    if (confirm('¿Estás seguro de que quieres eliminar este contacto?')) {
+                        this.contactos.splice(index, 1);
+                        this.guardarContactos();
+                    }
+                },
+                guardarContactos: function() {
+                    localStorage.setItem('contactosAgendaVue', JSON.stringify(this.contactos));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
